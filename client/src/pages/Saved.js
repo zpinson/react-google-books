@@ -18,11 +18,12 @@ class Saved extends Component {
 
   getSavedBooks = () => {
     API.getSavedBooks()
-      .then((res) =>
+      .then((res) =>{
         this.setState({
           books: res.data,
         })
-      )
+        console.log(this.state.books);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -53,6 +54,21 @@ class Saved extends Component {
                 Each book should have a delete button associate with it.
                 If the array is empty, then disply "No Saved Books" on the web page. */}
               {/* YOUR CODE IS HERE */}
+
+              <List>
+                {this.state.books.map((book) => (
+                  <Book
+                    key={book.googleId}
+                    title={book.title}
+                    subtitle={book.subtitle}
+                    link={book.link}
+                    authors={book.authors[0]}
+                    image={book.image}
+                    description={book.description}
+                    // handleBookSave={() => this.handleBookSave(book.id)}
+                  />
+                ))}
+              </List>
             </Card>
           </Col>
         </Row>

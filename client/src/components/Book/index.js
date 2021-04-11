@@ -3,7 +3,7 @@ import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
 import "./style.css";
 
-function Book({ title, subtitle, authors, link, description, image, Button }) {
+function Book({ title, subtitle, authors, link, description, image, handleBookSave }) {
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
@@ -16,7 +16,9 @@ function Book({ title, subtitle, authors, link, description, image, Button }) {
             <a className="btn btn-light" target="_blank" rel="noopener noreferrer" href={link}>
               View
             </a>
-            <Button />
+            <button className="btn btn-light" onClick={handleBookSave}>
+              Save Book
+            </button>
           </div>
         </Col>
       </Row>

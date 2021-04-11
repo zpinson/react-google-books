@@ -24,11 +24,12 @@ class Home extends Component {
 
   getBooks = () => {
     API.getBooks(this.state.q)
-      .then((res) =>
+      .then((res) => {
         this.setState({
           books: res.data,
-        })
-      )
+        });
+        console.log(this.state);
+      })
       .catch(() =>
         this.setState({
           books: [],
@@ -44,13 +45,14 @@ class Home extends Component {
 
   handleBookSave = (id) => {
     const book = this.state.books.find((book) => book.id === id);
+    console.log(book)
 
     API.saveBook({
       googleId: book.id,
       title: book.volumeInfo.title,
       subtitle: book.volumeInfo.subtitle,
       link: book.volumeInfo.infoLink,
-      authors: book.volumeInfo.authors,
+      authors: book.volumeInfo.authors[0],
       description: book.volumeInfo.description,
       image: book.volumeInfo.imageLinks.thumbnail,
     }).then(() => this.getBooks());
@@ -88,14 +90,14 @@ class Home extends Component {
               <List>
                 {this.state.books.map((book) => (
                   <Book
-                    key={book.googleId}
-                    title={book.title}
-                    subtitle={book.subtitle}
-                    link={book.link}
-                    author={book.author}
-                    image={book.image}
-                    description={book.description}
-                    // location={friend.location}
+                    key={book.id}
+                    title={book.volumeInfo.title}
+                    subtitle={book.volumeInfo.subtitle}
+                    link={book.volumeInfo.infoLink}
+                    authors={book.volumeInfo.authors[0]}
+                    image={book.volumeInfo.imageLinks.thumbnail}
+                    description={book.volumeInfo.description}
+                    handleBookSave={() => this.handleBookSave(book.id)}
                   />
                 ))}
               </List>
