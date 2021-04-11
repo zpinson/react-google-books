@@ -18,10 +18,10 @@ class Saved extends Component {
 
   getSavedBooks = () => {
     API.getSavedBooks()
-      .then((res) =>{
+      .then((res) => {
         this.setState({
           books: res.data,
-        })
+        });
         console.log(this.state.books);
       })
       .catch((err) => console.log(err));
@@ -65,7 +65,6 @@ class Saved extends Component {
                     authors={book.authors[0]}
                     image={book.image}
                     description={book.description}
-                    // handleBookSave={() => this.handleBookSave(book.id)}
                     Button={() => (
                       <button
                         onClick={() => this.handleBookDelete(book._id)}

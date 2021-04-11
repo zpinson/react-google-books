@@ -13,13 +13,15 @@ function Book({ title, subtitle, authors, link, description, image, Button }) {
         </Col>
         <Col size="md-4">
           <div className="btn-container">
-            <a className="btn btn-light" target="_blank" rel="noopener noreferrer" href={link}>
+            <a
+              className="btn btn-light"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={link}
+            >
               View
             </a>
             <Button />
-            {/* <button className="btn btn-light" onClick={handleBookSave}>
-              Save Book
-            </button> */}
           </div>
         </Col>
       </Row>
@@ -30,7 +32,11 @@ function Book({ title, subtitle, authors, link, description, image, Button }) {
       </Row>
       <Row>
         <Col size="12 sm-4 md-2">
-          <img className="img-thumbnail img-fluid w-100" src={image} alt={title} />
+          <img
+            className="img-thumbnail img-fluid w-100"
+            src={image}
+            alt={title}
+          />
         </Col>
         <Col size="12 sm-8 md-10">
           <p>{description}</p>
