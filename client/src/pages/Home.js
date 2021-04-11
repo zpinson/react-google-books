@@ -97,7 +97,15 @@ class Home extends Component {
                     authors={book.volumeInfo.authors[0]}
                     image={book.volumeInfo.imageLinks.thumbnail}
                     description={book.volumeInfo.description}
-                    handleBookSave={() => this.handleBookSave(book.id)}
+                    // handleBookSave={() => this.handleBookSave(book.id)}
+                    Button={() => (
+                      <button
+                        onClick={() => this.handleBookSave(book.id)}
+                        className="btn btn-light"
+                      >
+                        Save
+                      </button>
+                    )}
                   />
                 ))}
               </List>

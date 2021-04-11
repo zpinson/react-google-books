@@ -66,6 +66,14 @@ class Saved extends Component {
                     image={book.image}
                     description={book.description}
                     // handleBookSave={() => this.handleBookSave(book.id)}
+                    Button={() => (
+                      <button
+                        onClick={() => this.handleBookDelete(book._id)}
+                        className="btn btn-light"
+                      >
+                        Delete
+                      </button>
+                    )}
                   />
                 ))}
               </List>
